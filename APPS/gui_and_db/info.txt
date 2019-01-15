@@ -1,0 +1,20 @@
+library used for gui: tkinter   (script1,10)
+db used: SQLite3                (script2,20)
+         PostgreSql             (script3,)
+- SQLite3 is not a client/server db, but it is embedded into the end program
+
+import sqlite3   # for SQLite3       (comes with standard lib)
+import psycopg2  # for PostgreSql    (use pip to get it)
+
+5 main steps to work with a db:
+    1. connect to a db
+    2. create a cursor object - it's like a pointer to access rows from a table from db
+    3. write an sql query
+    4. commit the changes
+    5. close the connection
+
+
+PostgreSql needs to be installed separately
+
+default port: 5432
+default location: C:\PostgreSQL\data\pg10

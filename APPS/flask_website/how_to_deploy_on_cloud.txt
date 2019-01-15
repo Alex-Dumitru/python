@@ -1,0 +1,47 @@
+using https://www.heroku.com/ as the host
+and heroku toolbelt
+Pre-req
+- we need to create a virtual environment for the python application
+pip install virtualenv
+- create your virtual environment
+python -m venv virtual   #virtual is the name of the environment (folder)
+- then you need to install flask into the virtual environment
+use pip from virtual/Scripts/pip.exe
+pip install flask
+- (for test) start the app using the virtual environment
+virtual\Scripts\python flask_app\demo2.py
+- now we are ready to deploy the app in the cloud
+
+To deploy, we will use Git
+
+
+-Install heroku toolbelt
+-login to heroku from cli
+heroku login
+-create an app on heroku
+heroku create alex-flask-app1
+-list the apps you have
+heroku apps
+
+!!!! always use pip from the virtualenv
+- install gunicorn in your virtualenv  (this is a webserver)
+- dump 'pip freeze' in a file called requirements.txt
+pip freeze > requirements.txt
+- create a file named 'Procfile' and write this inside
+- name the webserver and then point to the python script. app is the app=Flask(__name__) which is creating the Flask instance
+web: gunicorn demo2:app
+- create a file called 'runtime.txt'
+- should contain the python version that you want to run under (default is 2.7, if you don't create this file)
+https://devcenter.heroku.com/articles/python-runtimes
+- point to the app you want to upload
+heroku git:remote --app alex-flask-app1
+- make a git repo in your directory
+git init
+git add .
+git commit -m 'first commit'
+- push the changes to heroku Git
+git push heroku master
+- open your app from cli
+heroku open
+- see the info about it
+heroku info

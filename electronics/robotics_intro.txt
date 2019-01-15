@@ -1,0 +1,48 @@
+
+1. Install Python
+https://www.python.org/downloads/
+
+2. Install Drivers to allow communication with ESP over serial line but using USB
+https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers
+
+3. We will need MicroPython firmware to flash [load] it to ESP
+Already downloaded:  esp8266-20171101-v1.9.3.bin
+
+Or you can download it from:
+http://micropython.org/download#esp8266
+
+
+4. Micropython documentation
+http://docs.micropython.org/en/latest/esp8266/esp8266/quickref.html
+
+
+5. Install flashing tool
+pip install esptool
+
+6. Install file uploading tool
+pip install adafruit-ampy
+
+
+7. Flashing Micropython
+esptool.py --port com4 --baud 115200 write_flash --flash_size=detect 0 esp8266-20171101-v1.9.3.bin
+
+
+connect via putty (serial port)
+
+
+import machine
+
+pin2 = machine.Pin(2, machine.Pin.OUT)
+pin2.on()
+pin2.off()
+
+def led1():
+    import machine
+    import utime
+    pin = machine.Pin(2, machine.Pin.OUT)
+    for i in range(5):
+        pin.on()
+        utime.sleep_ms(1000)
+        pin.off()
+        utime.sleep_ms(1000)
+    pin.on()

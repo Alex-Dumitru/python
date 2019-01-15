@@ -1,0 +1,47 @@
+windows have the hosts file here:  C:\Windows\System32\drivers\etc\hosts
+in mac/linux:                      etc/hosts
+
+if you want to block a website, like www.facebook.com, you can fill the Hosts file with:
+127.0.0.1 www.facebook.com
+
+- this will redirect www.facebook.com to localhost
+
+What the program will do:
+- we can make an infinite loop (while True) that will check all the time for current time, and then do the following:
+    - if time is between 8 and 16 then it will write that line in the hosts file
+    (this way, whenever you will try to access it during this period of time, you will not be able to)
+    - if it's outside that time frame it will rewrite the file without the websites that you have in the list for blocked sites
+
+Schedule the program to run in the background:
+- run python script in the background as a process in task manager
+    - 1st you need to change the extention from .py to .pyw This will change also the program which runs your script to pythonw.exe (C:\Users\dumal01\Python\Python36)
+    - you can simply double-click the file and it will run in task manager as a process, and not in terminal
+    - if it doesn't run from the 1st time, make sure you are running it as an administrator
+    - in task manager, the process will be shown as "pythonw.exe" and not by the file name
+- start at PC startup
+    - go to Task Scheduler
+    - create Task
+    - give it a name
+    - check box "run with highest privileges"
+    - from dropdown list "Configure for:" choose your Windows version
+    - then go to Triggers
+    - select New
+    - Begin the task: At startup
+    - then go to Actions
+    - Action: Start a program
+    - then by selecting Browse, find your python script
+    - then go to Conditions
+    - you may want to uncheck box "Start the task only if the computer is on AC power" (to enable to run also on battery, for laptops)
+    - press OK
+    - now the task should be in the list (ready) to run when the computer starts
+    - you can also Run it directly
+
+
+If you want to use it under linux:
+- make sure you change the path to the hosts file
+- and you can implement the scheduler in cron
+sudo crontab -e
+you can add the following line:
+@reboot python3 /path/to/file/blocker.py
+
+! when scheduled in these 2 ways, the script is executed from another directory so make sure to not use relative paths, and only use full path specification
