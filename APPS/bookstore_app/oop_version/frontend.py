@@ -1,7 +1,7 @@
 """
 A program that stores this book information:
 Title, Author
-Year, ISBM
+Year, ISBN
 
 User can:
 - view all records

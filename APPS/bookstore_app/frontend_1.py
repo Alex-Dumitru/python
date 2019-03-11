@@ -1,7 +1,7 @@
 '''
 A program that stores this book information:
 Title, Author
-Year, ISBM
+Year, ISBN
 
 User can:
 - view all records
@@ -13,6 +13,7 @@ User can:
 
 See app_layout.png for a sketch layout.
 
+THIS IS JUST THE FRONT END - with no connection to backend
 '''
 
 
