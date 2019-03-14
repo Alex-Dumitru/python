@@ -78,52 +78,34 @@ input_field.pack(ipady = 10) # 'ipady' is internal padding to increase the heigh
 btns_frame = Frame(window, width = 312, height = 272.5, bg = "grey")
 btns_frame.pack()
 
+def createButton(root, val):
+    return Button(root, text=val, command = lambda: btn_click(val)) 
+
 # creating the buttons for NUMPAD (store them in a dict for quick reference)
 numpad_container = {}
 for idx in range(10):
-    numpad_container[idx] = Button(btns_frame, text = str(idx))
+    # numpad_container[idx] = Button(btns_frame, text = str(idx), command = lambda : btn_click(idx))
+    numpad_container[idx] = createButton(btns_frame, idx)
+    print(numpad_container[idx]["text"])
 
 key = 1
 # placing the buttons with .grid()
+
 for x in range(3,0,-1):
     for y in range(3):
-        print(key)
-        numpad_container[key].configure(command = lambda: btn_click(key))
         numpad_container[key].grid(row = x, column = y, padx = PADX, pady = PADY)
-        print(numpad_container[key]["command"])
-        print("row =", x, "column =", y)
+        # print("row =", x, "column =", y)
         key += 1
-# fix the loop (it assigns same number to all buttons)
+
+numpad_container[0].grid(row = 4, column = 0, columnspan = 2, padx = PADX, pady = PADY)
 # see here: https://medium.com/@adeyinkaadegbenro/project-build-a-python-gui-calculator-fc92bddb744d
 
-# first row
+OPERATORS = ["C", "/", "*", "-", "+", ".", "="]
 clear = Button(btns_frame, text = "C", command = lambda: btn_clear()).grid(row = 0, column = 0, columnspan = 3, padx = 1, pady = 1)
 divide = Button(btns_frame, text = "/", command = lambda: btn_click("/")).grid(row = 0, column = 3, padx = 1, pady = 1)
-
-
-# second row
-# seven    = Button(btns_frame, text = "7", command = lambda: btn_click(7)).grid(row = 1, column = 0, padx = 1, pady = 1)
-# eight    = Button(btns_frame, text = "8", command = lambda: btn_click(8)).grid(row = 1, column = 1, padx = 1, pady = 1)
-# nine     = Button(btns_frame, text = "9", command = lambda: btn_click(9)).grid(row = 1, column = 2, padx = 1, pady = 1)
 multiply = Button(btns_frame, text = "*", command = lambda: btn_click("*")).grid(row = 1, column = 3, padx = 1, pady = 1)
-
-
-# third row
-# four  = Button(btns_frame, text = "4", command = lambda: btn_click(4)).grid(row = 2, column = 0, padx = 1, pady = 1)
-# five  = Button(btns_frame, text = "5", command = lambda: btn_click(5)).grid(row = 2, column = 1, padx = 1, pady = 1)
-# six   = Button(btns_frame, text = "6", command = lambda: btn_click(6)).grid(row = 2, column = 2, padx = 1, pady = 1)
 minus = Button(btns_frame, text = "-", command = lambda: btn_click("-")).grid(row = 2, column = 3, padx = 1, pady = 1)
-
-
-# fourth row
-# one   = Button(btns_frame, text = "1", command = lambda: btn_click(1)).grid(row = 3, column = 0, padx = 1, pady = 1)
-# two   = Button(btns_frame, text = "2", command = lambda: btn_click(2)).grid(row = 3, column = 1, padx = 1, pady = 1)
-# three = Button(btns_frame, text = "3", command = lambda: btn_click(3)).grid(row = 3, column = 2, padx = 1, pady = 1)
 plus  = Button(btns_frame, text = "+", command = lambda: btn_click("+")).grid(row = 3, column = 3, padx = 1, pady = 1)
-
-
-# fourth row
-zero   = Button(btns_frame, text = "0", command = lambda: btn_click(0)).grid(row = 4, column = 0, columnspan = 2, padx = 1, pady = 1)
 point  = Button(btns_frame, text = ".", command = lambda: btn_click(".")).grid(row = 4, column = 2, padx = 1, pady = 1)
 equals = Button(btns_frame, text = "=", command = lambda: btn_equal()).grid(row = 4, column = 3, padx = 1, pady = 1)
 
