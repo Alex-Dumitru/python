@@ -38,7 +38,7 @@ def btn_equal():
     # catch syntaxerror on eval - make action when pressing again the button
     # win calc remembers last operation and redo it
     try:
-        #  you can also implement your own function to evalute the expression instead of 'eval' function
+        # you can also implement your own function to evalute the expression instead of 'eval' function
         result = str(eval(expression)) # 'eval' function evalutes the string expression directly
     except SyntaxError:
         # in case eval gets empty string, in case you press = one more time, it will throw SyntaxError
