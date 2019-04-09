@@ -371,6 +371,72 @@ Output:
 
 # Decorators
 
+In the most simplest words, a decorator is a function which modifies the functionality of other functions. 
+
+## How to write a decorator
+
+First of all let’s review the functions in Python:
+
+```python
+# we define a function that says "Hi" to a name. If we don't specify the "name", the name will default to "Alex"
+
+def hello(name="Alex"):
+    return "Hi " + name
+
+print(hi())
+# output: 'Hi Alex'
+
+# We can even assign a function to a variable like
+greet = hello
+# We are not using parentheses here because we are not calling the function hello
+# instead we are just putting it into the greet variable. Let's try to run this
+
+print(greet())
+# output: 'hello Alex'
+
+# Let's see what happens if we delete the old "hello" function!
+del hello
+print(hello())
+#outputs: NameError
+
+print(greet())
+#outputs: 'hello Alex'
+```
+
+Let's take it one step further, and define other functions inside our function
+
+```python
+def hello(name="Alex"):
+    print("now you are inside the hello() function")
+
+    def greet():
+        return "now you are in the greet() function"
+
+    def welcome():
+        return "now you are in the welcome() function"
+
+    print(greet())
+    print(welcome())
+    print("now you are back in the hello() function")
+
+hello()
+#output:now you are inside the hello() function
+#       now you are in the greet() function
+#       now you are in the welcome() function
+#       now you are back in the hello() function
+
+# This shows that whenever you call hello(), greet() and welcome()
+# are also called. However the greet() and welcome() functions
+# are not available outside the hello() function e.g:
+
+greet()
+#outputs: NameError: name 'greet' is not defined
+```
+
+
+
+
+---
 
 possible material [here](http://book.pythontips.com/en/latest/index.html)
 
