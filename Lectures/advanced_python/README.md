@@ -52,7 +52,7 @@ Output:
 ```
 - this replaces a nested `for` loop
 
-[Documentaion](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)
+[Documentation](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)
 
 ## Dictionary Comprehension
 They work in similar way, but the input and output is a dictionary.
